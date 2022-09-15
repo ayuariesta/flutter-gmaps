@@ -2,15 +2,10 @@
 
 A new Flutter project.
 
-## Getting Started
+## Menambahkan plugin Google Maps Flutter sebagai dependensi
 
-This project is a starting point for a Flutter application.
+Pada praktikum ini, kita akan menambahkan plugin google maps untuk menampilkan maps di device kita.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+'''
+flutter pub add google_maps_flutter
+'''
