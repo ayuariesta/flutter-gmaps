@@ -24,3 +24,4 @@ flutter pub add google_maps_flutter
 
 ## Tugas Praktikum
 Buatlah aplikasi flutter yang dapat menampilkan peta dan beri tanda (marker) posisi rumah atau tempat tinggal Anda masing-masing!
+![Screenshot flutter_maps](images/10.png)
