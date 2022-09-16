@@ -38,10 +38,10 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }*/
-
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'src/locations.dart' as locations;
+//import 'src/locations.dart' as locations;
 
 void main() {
   runApp(const MyApp());
@@ -54,7 +54,7 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+/*class _MyAppState extends State<MyApp> {
   final Map<String, Marker> _markers = {};
   Future<void> _onMapCreated(GoogleMapController controller) async {
     final googleOffices = await locations.getGoogleOffices();
@@ -89,6 +89,47 @@ class _MyAppState extends State<MyApp> {
             zoom: 2,
           ),
           markers: _markers.values.toSet(),
+        ),
+      ),
+    );
+  }
+}*/
+
+class _MyAppState extends State<MyApp> {
+  late LatLng currentLatLng = const LatLng(-8.0903422, 112.2963885);
+  final Completer<GoogleMapController> _controller = Completer();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('My Location'),
+          backgroundColor: Colors.green[700],
+        ),
+        body: GoogleMap(
+          onMapCreated: (GoogleMapController controller) {
+            _controller.complete(controller);
+          },
+          initialCameraPosition:
+              CameraPosition(target: currentLatLng, zoom: 15),
+          markers: <Marker>{
+            Marker(
+              draggable: false,
+              markerId: const MarkerId("1"),
+              position: currentLatLng,
+              icon: BitmapDescriptor.defaultMarker,
+              infoWindow: const InfoWindow(
+                title: 'My Location',
+                snippet: 'Jl. Kartomo RT 01 RW 01',
+              ),
+            )
+          },
         ),
       ),
     );
